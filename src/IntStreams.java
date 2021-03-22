@@ -8,4 +8,3 @@ public class IntStreams {
             System.out.println(n);
         };
     }
-}
