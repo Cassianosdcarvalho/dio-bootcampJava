@@ -2,7 +2,7 @@ package dio.comparetor;
 
 import java.util.Comparator;
 
-public class ClassComparator implements Comparator<ClassComparator> {
+public class ClassComparator implements Comparator <ClassComparator> {
 
 
     @Override

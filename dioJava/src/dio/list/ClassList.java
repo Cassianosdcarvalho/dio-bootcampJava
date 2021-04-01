@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ClassList {
     public static void main(String[] args) {
+
         List<String> listas = new ArrayList<>();
 
         listas.add("Juliana");
