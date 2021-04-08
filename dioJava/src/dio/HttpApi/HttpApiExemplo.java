@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class HttpApiExemplo {
     public static void main(String[] args) throws IOException, InterruptedException {
-         connecttHttp();
+         connectHttp();
     }
 
     //realise  antiga
@@ -24,8 +24,8 @@ public class HttpApiExemplo {
         System.out.println(bufferedReaderInferencia.lines().collect(Collectors.joining()).replaceAll(">", ">\n"));
     }
 
-
-    private static void connecttHttp() throws IOException, InterruptedException {//nova rlise versao jdk 11
+//release nova jdk11
+    private static void connectHttp() throws IOException, InterruptedException {//nova rlise versao jdk 11
         HttpRequest requisicao = HttpRequest.newBuilder().GET().uri(URI.create("https://docs.oracle.com/javase/10/language/")).build();
 
 
@@ -36,5 +36,9 @@ public class HttpApiExemplo {
         System.out.println("Status code: "+ resposta.statusCode());
         System.out.println("Headers response: "+ resposta.headers());
         System.out.println("corpo: "+ resposta.body());
+    }
+
+    public static void connectHttp2(){
+
     }
 }
