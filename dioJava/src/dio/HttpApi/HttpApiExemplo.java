@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class HttpApiExemplo {
     public static void main(String[] args) throws IOException, InterruptedException {
-         connectHttp();
+         connecttHttp();
     }
 
     //realise  antiga
@@ -25,7 +25,7 @@ public class HttpApiExemplo {
     }
 
 
-    private static void connectHttp() throws IOException, InterruptedException {//nova rlise versao jdk 11
+    private static void connecttHttp() throws IOException, InterruptedException {//nova rlise versao jdk 11
         HttpRequest requisicao = HttpRequest.newBuilder().GET().uri(URI.create("https://docs.oracle.com/javase/10/language/")).build();
 
 
