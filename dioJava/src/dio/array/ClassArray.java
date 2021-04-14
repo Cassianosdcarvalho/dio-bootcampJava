@@ -14,13 +14,12 @@ public class ClassArray {
         nomes.add("Helena");
         nomes.add("Magda");
         nomes.add("Bruno");
+        nomes.add("Anderson");
+        nomes.add("Romilton");
+
         System.out.println(nomes);
 
         Collections.sort(nomes);
         System.out.println(nomes);
-
-
-
     }
-
 }
