@@ -2,33 +2,41 @@ package dio.desafios;
 
 import java.io.IOException;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Ajuda {
+public class Ajuda{
     public static void main(String[] args) throws IOException {
 
-        List<String>entrada = new ArrayList<>();
+        List<String>frase = new ArrayList<>();
 
-        entrada.add("abcdef");
-        entrada.add(".");
-        entrada.add("abc");
-        entrada.add("abc");
-        entrada.add("abc");
-        entrada.add("cassiano");
-        entrada.add("clara");
-        entrada.add("");
-        entrada.add("     ");
-        entrada.add("TALITA");
-        entrada.add("talita");
+        frase.add("cassiano");
+        frase.add("cassiano");
+        frase.add("talita");
+        frase.add("helena");
+        frase.add("cassiano");
+        frase.add("clara");
+        frase.add("abcdef");
+        frase.add("helena");
+        frase.add(".");
+        frase.add("abc");
+        frase.add("abc");
+        frase.add("abc");
+        frase.add("cassiano");
+        frase.add("clara");
+        frase.add("");
+        frase.add("     ");
+        frase.add("helena");
+        frase.add("helen");
 
         //insira sua solução aqui
 
         TextoBlog textoBlog = new TextoBlog();
 
-        for (String palavra : entrada) {
+        for (String palavra : frase) {
 
-            textoBlog.abreviaNaoAbrevia(palavra.trim().toLowerCase());
+            textoBlog.constroiTexto(palavra.trim().toLowerCase());
 
         }//while
 
@@ -47,18 +55,49 @@ public class Ajuda {
         List<String>dicionarioLista = new ArrayList<>();
 
         List<String>letras = new ArrayList<>();
+        List<String>palavras = new ArrayList<>();
 
-        public void abreviaNaoAbrevia(String palavra){
-            String  palavraAbreviada;
-            if((validaPalavra(palavra)) && (validaPalavraAbreviada(palavra) && (contemNaoContemLetra(palavra)))){
-                palavraAbreviada = palavra.charAt(0)+".";
-                dicionario(palavraAbreviada, palavra);
-                textoTratado = textoTratado + " "+ palavraAbreviada;
-                cont++;
-            }else if((validaPalavra(palavra))){
-                textoTratado = textoTratado + " "+ palavra;
-            }
+        public void constroiTexto(String palavra){
+
+            String palavraAbreviada;
+
+            if(validaPalavra(palavra)){
+
+                boolean palavraValidaAbreviada = validaPalavraAbreviada(palavra);
+
+                if(palavraValidaAbreviada){
+
+                    boolean naoContemLetra = contemNaoContemLetra(palavra);
+                    boolean naoContemPalavra = contemNaoContemPalavra(palavra);
+
+                    palavraAbreviada = palavra.charAt(0) + ".";
+
+                    if (naoContemLetra && naoContemPalavra) {
+
+                        dicionario(palavraAbreviada, palavra);
+                        textoTratado = textoTratado + " " + palavraAbreviada;
+                        palavras.add(palavra);
+                        cont++;
+
+                    }else if (!naoContemLetra && !naoContemPalavra) {
+                        textoTratado = textoTratado + " " + palavraAbreviada;
+
+                    }else if(naoContemLetra){
+                        textoTratado = textoTratado + " " + palavra;
+
+                    }else {
+                        textoTratado = textoTratado + " " + palavra;
+
+                    }
+                }else{
+                    textoTratado = textoTratado + " " + palavra;
+                }
+            }//validapalavraabreviada
         }//palavraAbreviada ok
+
+        private boolean contemNaoContemPalavra(String palavra){
+            return !palavras.contains(palavra);
+        }//alfabeto ok
 
         private boolean validaPalavra(String palavra){
             return (palavra != null) && (!palavra.isEmpty()) && (!palavra.equals("."));
@@ -66,22 +105,22 @@ public class Ajuda {
 
         private boolean validaPalavraAbreviada(String palavra){
             String  palavraAbreviada = palavra.charAt(0)+".";
-
             return (palavraAbreviada.length() < palavra.length());
         }//abreviaNaoAbrevia ok
 
         private boolean contemNaoContemLetra(String palavra){
             String letra = palavra.substring(0,1);
-            if(letras.contains(letra)){
-                return false;
-            }else{
+            if(!letras.contains(letra)){
                 letras.add(letra);
                 return true;
+            }else{
+                return false;
             }
         }//alfabeto ok
 
         public void dicionario(String palavraAbreviada, String palavraCompleta){
             dicionarioLista.add(palavraAbreviada+" = "+palavraCompleta);
+            Collections.sort(dicionarioLista);
         }//dicionario ok
     }//TextoBlog
 }
